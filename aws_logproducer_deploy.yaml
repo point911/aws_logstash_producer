@@ -1,0 +1,33 @@
+- name: Wait for become yes
+  hosts:
+    - tag_Name_app1
+  connection: ssh
+  gather_facts: no
+  remote_user: ubuntu
+  tasks:
+    - command: sleep "{{ item }}"
+      become: yes
+      with_items:
+        - 1
+        - 15
+
+- name: Install and configure logstash for the app
+  hosts:
+    - tag_Name_app1
+  connection: ssh
+  gather_facts: yes
+
+  remote_user: ubuntu
+
+
+  pre_tasks:
+    - name: Update apt
+      become: yes
+      apt:
+        cache_valid_time: 1800
+        update_cache: yes
+      tags:
+        - build
+
+  roles:
+    - name: sansible.logstash
