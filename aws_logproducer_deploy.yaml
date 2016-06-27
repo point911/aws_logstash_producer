@@ -19,6 +19,8 @@
 
   remote_user: ubuntu
 
+  vars_files:
+    - vars/aws/logproducer/logstash.yaml
 
   pre_tasks:
     - name: Update apt
@@ -30,4 +32,4 @@
         - build
 
   roles:
-    - name: sansible.logstash
+    - name: logstash

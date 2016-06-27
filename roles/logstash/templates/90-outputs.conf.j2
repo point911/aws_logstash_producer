@@ -1,0 +1,10 @@
+##
+# {{ ansible_managed }}
+#
+
+output {
+    kafka {
+        bootstrap_servers => '{{ logstash.outputs.kafka.host }}'
+        topic_id => 'logstash'
+    }
+}
