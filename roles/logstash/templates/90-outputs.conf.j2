@@ -4,7 +4,7 @@
 
 output {
     kafka {
-        bootstrap_servers => '{{ logstash.outputs.kafka.host }}'
+        bootstrap_servers => '{{ logstash.outputs.kafka.bootstrap_servers }}'
         topic_id => 'logstash'
     }
 }
