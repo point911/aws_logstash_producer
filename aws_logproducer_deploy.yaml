@@ -38,5 +38,5 @@
         - build
 
   roles:
-    - name: ssh
-    - name: logstash
+    - name: community/ssh
+    - name: community/logstash

@@ -13,7 +13,7 @@ aws:
       description: This is a security group for logproducer training instances
 
   instances:
-    - name: "{{ logproducer.env.aws.instances.names[1] }}"
+    - name: "{{ logproducer.env.aws.instances.names[0] }}"
       inventory_group: "{{ logproducer.env.aws.instances.inventory_group }}"
       instance_type: "{{ logproducer.env.aws.instances.type }}"
       security_group: "{{ logproducer.env.aws.instances.security_groups }}"

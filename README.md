@@ -13,5 +13,10 @@ This playbook runs standalone logproducer with logstash
     git submodule update
     ```
 
+3. Update all submodules:
 
+    ```
+    git submodule foreach git pull origin master
+    ```
+    
 
