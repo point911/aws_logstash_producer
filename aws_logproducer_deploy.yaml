@@ -1,9 +1,13 @@
 - name: Wait for become yes
   hosts:
-    - tag_Name_app1
+    - tag_Name_{{ logproducer.env.aws.instances.names[0] }}
   connection: ssh
   gather_facts: no
   remote_user: ubuntu
+
+  vars_files:
+    - vars/aws/logproducer/logproducer.yaml
+
   tasks:
     - command: sleep "{{ item }}"
       become: yes
@@ -13,14 +17,16 @@
 
 - name: Install and configure logstash for the app
   hosts:
-    - tag_Name_app1
+    - tag_Name_{{ logproducer.env.aws.instances.names[0] }}
   connection: ssh
   gather_facts: yes
 
   remote_user: ubuntu
 
   vars_files:
+    - vars/aws/logproducer/logproducer.yaml
     - vars/aws/logproducer/logstash.yaml
+    - vars/ssh_users/ssh_users.yaml
 
   pre_tasks:
     - name: Update apt
@@ -32,4 +38,5 @@
         - build
 
   roles:
+    - name: ssh
     - name: logstash

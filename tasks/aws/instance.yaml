@@ -2,7 +2,7 @@
 
 - name: search for an ami image
   ec2_ami_search: >
-    region={{ region|default('us-west-2') }}
+    region={{ aws.region|default('us-west-2') }}
     store={{ store|default('ebs') }}
     virt={{ virt|default('hvm') }}
     distro={{ distro|default('ubuntu') }}
@@ -14,15 +14,15 @@
 
 - name: Provision EC2 instances.
   ec2:
-    key_name: "{{ keypair|default('mykey') }}"
+    key_name: "{{ aws.keypair|default('mykey') }}"
     instance_tags:
       Name: "{{ item.name | default('') }}"
-      inventory_group: "{{ item.group | default('') }}"
+      inventory_group: "{{ item.inventory_group | default('') }}"
       inventory_host: "{{ item.name | default('') }}"
     group: "{{ item.security_group | default('') }}"
     instance_type: "{{ item.instance_type | default('t2.micro')}}" # Free
     image: "{{ ami_data.ami }}"
-    region: "{{ region|default('us-west-2') }}"
+    region: "{{ aws.region|default('us-west-2') }}"
     wait: yes
     wait_timeout: 500
     exact_count: 1
@@ -31,7 +31,7 @@
       inventory_group: "{{ item.group | default('') }}"
       inventory_host: "{{ item.name | default('') }}"
   register: created_instances
-  with_items: "{{ instances }}"
+  with_items: "{{ aws.instances }}"
 
 - name: debug instance start
   debug: 'msg="{{ created_instances }}"'

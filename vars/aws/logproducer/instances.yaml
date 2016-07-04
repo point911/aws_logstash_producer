@@ -1,5 +1,0 @@
-instances:
-  - name: app1
-    group: "elk"
-    security_group: ["logproducer"]
-    instance_type: "t2.medium"

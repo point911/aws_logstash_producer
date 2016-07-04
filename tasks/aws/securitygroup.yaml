@@ -3,12 +3,12 @@
   ec2_group:
     name: "{{ item.name }}"
     description: "{{ item.description }}"
-    region: "{{ region|default('us-west-2') }}"
+    region: "{{ aws.region|default('us-west-2') }}"
     state: present
     rules: "{{ item.rules }}"
     rules_egress: "{{ item.rules_egress }}"
   register: created_groups
-  with_items: security_groups
+  with_items: aws.security_groups
 
 - name: debug security group
   debug: msg="{{ created_groups }}"

@@ -4,10 +4,10 @@
   connection: local
 
   vars_files:
-    - vars/aws/logproducer/instances.yaml
-    - vars/aws/logproducer/security_groups.yaml
+    - vars/aws/logproducer/logproducer.yaml
+    - vars/aws/logproducer/aws.yaml
 
   tasks:
-    - include: tasks/aws/keypair.yaml name="logproducer" region="us-west-2"
-    - include: tasks/aws/securitygroup.yaml region="us-west-2"
-    - include: tasks/aws/instance.yaml keypair="logproducer" region="us-west-2"
+    - include: tasks/aws/keypair.yaml
+    - include: tasks/aws/securitygroup.yaml
+    - include: tasks/aws/instance.yaml

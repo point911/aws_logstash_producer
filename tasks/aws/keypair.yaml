@@ -9,16 +9,16 @@
 - name: remove existing keypair when force_keypair=True
   local_action:
     module: ec2_key
-    name: "{{ name|default('tutorial') }}"
-    region: "{{ region|default('us-west-2') }}"
+    name: "{{ aws.key |default('tutorial') }}"
+    region: "{{ aws.region |default('us-west-2') }}"
     state: absent
   when: force_keypair|default(False)
 
 - name: make a keypair with the specified name
   local_action:
     module: ec2_key
-    name: "{{ name|default('tutorial') }}"
-    region: "{{ region|default('us-west-2') }}"
+    name: "{{ aws.keypair |default('tutorial') }}"
+    region: "{{ aws.region|default('us-west-2') }}"
     wait: yes
   register: key_data
 
@@ -26,7 +26,7 @@
   local_action:
     module: copy
     content: "{{ key_data.key.private_key }}"
-    dest: "keys/{{ name|default('tutorial') }}"
+    dest: "keys/{{ aws.keypair |default('tutorial') }}"
     mode: 0600
   when: key_data.key.private_key|default(0)
 
