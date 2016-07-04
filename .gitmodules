@@ -1,0 +1,3 @@
+[submodule "tasks/aws"]
+	path = tasks/aws
+	url = https://github.com/point911/aws_ansible_tasks
