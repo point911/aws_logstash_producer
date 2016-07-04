@@ -1,0 +1,15 @@
+logproducer:
+  env:
+    aws:
+      region: us-west-2
+      security_group:
+        name: logproducer_test
+      instances:
+        names: ["logproducer_app1"]
+        type: t2.medium
+        inventory_group: "logproducer"
+        security_groups: ["logproducer_test"]
+
+      key:
+        name: testkey
+
