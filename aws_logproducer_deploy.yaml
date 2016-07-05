@@ -39,4 +39,5 @@
 
   roles:
     - name: community/ssh
+    - name: community/java
     - name: community/logstash
