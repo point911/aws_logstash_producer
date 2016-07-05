@@ -1,5 +1,7 @@
 ---
 
+server_group: "{{ lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') if lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') != '' else 'security_group_kafka' }}"
+
 logstash:
 
   inputs:
@@ -8,7 +10,7 @@ logstash:
 
   outputs:
     kafka:
-      bootstrap_servers: "{{ groups['security_group_kafka']|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':9092,')+':9092' }}"
+      bootstrap_servers: "{{ groups[server_group]|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':9092,')+':9092' }}"
       topic_id: logstash
 
   plugins: []
