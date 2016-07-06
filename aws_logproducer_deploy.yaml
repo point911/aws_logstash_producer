@@ -1,3 +1,19 @@
+- name: Get debug info
+  hosts:
+    - localhost
+  connection: local
+  gather_facts: yes
+
+  vars_files:
+    - vars/aws/logproducer.yaml
+
+  tasks:
+    - name: Print debug info
+
+      debug: msg="{{ env.aws.instances.inventory_group }}"
+
+
+
 - name: Wait for become yes
   hosts:
     - tag_inventory_group_{{ env.aws.instances.inventory_group }}
