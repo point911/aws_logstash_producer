@@ -1,12 +1,13 @@
 ---
 
 server_group: "{{ lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') if lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') != '' else 'kafka' }}"
+input_file_path: "{{ lookup('env','LOGSTASH_INPUT_FILE_PATH') if lookup('env','LOGSTASH_INPUT_FILE_PATH') != '' else '/tmp/output.log' }}"
 
 logstash:
 
   inputs:
     file:
-      path: /tmp/output.log
+      path: "{{ input_file_path }}"
 
   outputs:
     kafka:
