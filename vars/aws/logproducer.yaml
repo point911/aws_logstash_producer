@@ -17,7 +17,8 @@ env:
       number: "{{ lookup('env','AWS_INSTANCE_NUMBER') if lookup('env','AWS_INSTANCE_NUMBER') != '' else 1 }}"
       name: "logproducer_app"
       type: t2.medium
-      inventory_group: "logproducer"
+      # Termination by this criteris
+      inventory_group: "{{ lookup('env','AWS_INVENTORY_GROUP') if lookup('env','AWS_INVENTORY_GROUP') != '' else 'logproducer' }}"
       security_groups: ["logproducer_test"]
 
     key:
