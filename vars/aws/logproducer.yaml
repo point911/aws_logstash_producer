@@ -14,7 +14,7 @@ env:
           cidr_ip: "0.0.0.0/0"
 
     instances:
-      number: 2
+      number: "{{ lookup('env','AWS_INSTANCE_NUMBER') if lookup('env','AWS_INSTANCE_NUMBER') != '' else 1 }}"
       name: "logproducer_app"
       type: t2.medium
       inventory_group: "logproducer"

@@ -17,7 +17,7 @@ aws:
       description: This is a security group for {{ env.name }} training instances
 
   instances:
-{% for num in range(env.aws.instances.number) %}
+{% for num in range(env.aws.instances.number|int) %}
 
     - name: "{{ env.aws.instances.name + num|string }}"
       inventory_group: "{{ env.aws.instances.inventory_group }}"

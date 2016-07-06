@@ -1,0 +1,69 @@
+aws:
+  security_groups:
+    - name: "logproducer_test"
+      rules:
+        - proto: tcp
+          from_port: 22
+          to_port: 22
+          cidr_ip: 0.0.0.0/0
+      rules_egress:
+        - proto: all
+          cidr_ip: 0.0.0.0/0
+
+      description: This is a security group for logproducer training instances
+
+  instances:
+
+    - name: "logproducer_app0"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app1"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app2"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app3"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app4"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app5"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app6"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app7"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app8"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app9"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+  keypair: "testkey"
+
+  region: "us-west-2"
