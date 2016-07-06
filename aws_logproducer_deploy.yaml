@@ -17,7 +17,7 @@
 
 - name: Install and configure logstash for the app
   hosts:
-    - tag_Name_{{ env.aws.instances.names[0] }}
+    - security_group_{{ env.aws.security_group.name }}
   connection: ssh
   gather_facts: yes
 
