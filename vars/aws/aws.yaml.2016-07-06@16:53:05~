@@ -1,0 +1,26 @@
+aws:
+  security_groups:
+    - name: "logproducer_test"
+      rules:
+        - [{u'to_port': 22, u'from_port': 22, u'cidr_ip': u'0.0.0.0/0', u'proto': u'tcp'}]
+      rules_egress:
+        - proto: all
+          cidr_ip: "0.0.0.0/0"
+
+      description: This is a security group for logproducer training instances
+
+  instances:
+
+    - name: "logproducer_app0"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+    - name: "logproducer_app1"
+      inventory_group: "logproducer"
+      instance_type: "t2.medium"
+      security_group: "[u'logproducer_test']"
+
+  keypair: "testkey"
+
+  region: "us-west-2"

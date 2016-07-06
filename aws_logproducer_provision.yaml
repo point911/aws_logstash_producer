@@ -4,8 +4,8 @@
   connection: local
 
   vars_files:
-    - vars/aws/logproducer/logproducer.yaml
-    - vars/aws/logproducer/aws.yaml
+    - vars/aws/logproducer.yaml
+    - vars/aws/aws.yaml
 
   tasks:
     - include: tasks/aws/keypair.yaml
