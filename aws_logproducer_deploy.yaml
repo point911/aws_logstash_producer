@@ -1,6 +1,6 @@
 - name: Wait for become yes
   hosts:
-    - security_group_{{ env.aws.security_groups.name }}
+    - tag_inventory_group_{{ env.aws.instances.inventory_group }}
   connection: ssh
   gather_facts: no
   remote_user: ubuntu
@@ -17,7 +17,7 @@
 
 - name: Install and configure logstash for the app
   hosts:
-    - security_group_{{ env.aws.security_groups.name }}
+    - tag_inventory_group_{{ env.aws.instances.inventory_group }}
   connection: ssh
   gather_facts: yes
 
