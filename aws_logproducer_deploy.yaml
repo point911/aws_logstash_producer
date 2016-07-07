@@ -44,4 +44,4 @@
     - name: community/logstash
 
   post_tasks:
-    - include: tasks/helpers/eject_public_key.yaml
+    - include: tasks/aws/eject_public_key.yaml
