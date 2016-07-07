@@ -27,6 +27,7 @@
     - vars/aws/logproducer.yaml
     - vars/aws/logstash.yaml
     - vars/ssh_users/ssh_users.yaml
+    - vars/aws/aws.yaml
 
   pre_tasks:
     - name: Update apt
@@ -41,3 +42,6 @@
     - name: community/ssh
     - name: community/java
     - name: community/logstash
+
+  post_tasks:
+    - include: tasks/helpers/eject_public_key.yaml
