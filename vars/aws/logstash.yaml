@@ -1,7 +1,7 @@
 ---
 
-server_group: "{{ lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') if lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') != '' else 'kafka' }}"
 input_file_path: "{{ lookup('env','LOGSTASH_INPUT_FILE_PATH') if lookup('env','LOGSTASH_INPUT_FILE_PATH') != '' else '/tmp/output.log' }}"
+logstash_output_kafka_servers_group: "{{ lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') if lookup('env','LOGSTASH_OUTPUT_KAFKA_SERVERS_GROUP') != '' else 'standalone_kafka' }}"
 
 logstash:
 
@@ -11,7 +11,7 @@ logstash:
 
   outputs:
     kafka:
-      bootstrap_servers: "{{ groups['security_group_'+server_group]|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':9092,')+':9092' }}"
+      bootstrap_servers: "{{ groups['tag_inventory_group'+logstash_output_kafka_servers_group]|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':9092,')+':9092' }}"
       topic_id: logstash
 
   plugins: []
