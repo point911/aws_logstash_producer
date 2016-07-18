@@ -43,5 +43,3 @@
     - name: community/java
     - name: community/logstash
 
-  post_tasks:
-    - include: tasks/aws/eject_public_key.yaml
