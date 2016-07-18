@@ -11,7 +11,7 @@ logstash:
 
   outputs:
     kafka:
-      bootstrap_servers: "{{ groups['tag_inventory_group'+logstash_output_kafka_servers_group]|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':9092,')+':9092' }}"
+      bootstrap_servers: "{{ groups['tag_inventory_group_'+logstash_output_kafka_servers_group]|map('extract', hostvars, 'ec2_private_ip_address')|list|join(':9092,')+':9092' }}"
       topic_id: logstash
 
   plugins: []
