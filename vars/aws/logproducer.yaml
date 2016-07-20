@@ -28,9 +28,9 @@ env:
       - name: "cpu-utilization"
         type: "CPUUtilization"
         comparator: ">="
-        threshold: "2.0"
+        threshold: "5.0"
         unit: "Percent"
-        period: "1"
+        period: "60"
         evaluation_periods: "1"
         alarm_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         ok_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
