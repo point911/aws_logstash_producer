@@ -1,3 +1,23 @@
+- name: Wait for become yes
+  hosts:
+    - tag_inventory_group_{{ env.aws.instances.inventory_group }}
+  connection: ssh
+  gather_facts: yes
+  remote_user: ubuntu
+  become: yes
+
+  vars_files:
+    - vars/aws/logproducer.yaml
+
+  tasks:
+    - command: sleep "{{ item }}"
+      become: yes
+      with_items:
+        - 1
+        - 15
+
+    - include: tasks/aws/instances_monitoring.yaml alarm_state=absent
+
 - name: Terminate logproducer environment
   hosts: localhost
   gather_facts: false
@@ -11,5 +31,3 @@
     - include: tasks/aws/instances_terminate.yaml
     - include: tasks/aws/keypair_terminate.yaml
     - include: tasks/aws/securitygroup_terminate.yaml
-    - include: tasks/aws/instances_monitoring.yaml alarm_state=absent
-
