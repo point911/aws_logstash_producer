@@ -30,7 +30,7 @@ env:
         comparator: ">="
         threshold: "2.0"
         unit: "Percent"
-        period: "60"
+        period: "1"
         evaluation_periods: "1"
         alarm_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         ok_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
