@@ -16,7 +16,7 @@
         - 1
         - 15
 
-    - include: tasks/aws/instances_monitoring.yaml
+    - include: tasks/aws/instances_monitoring.yaml alarm_state=present
 
 
 - name: Install and configure logstash for the app

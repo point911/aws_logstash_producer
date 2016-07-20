@@ -11,4 +11,5 @@
     - include: tasks/aws/instances_terminate.yaml
     - include: tasks/aws/keypair_terminate.yaml
     - include: tasks/aws/securitygroup_terminate.yaml
+    - include: tasks/aws/instances_monitoring.yaml alarm_state=absent
 
