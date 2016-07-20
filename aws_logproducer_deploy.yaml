@@ -39,11 +39,14 @@
       tags:
         - build
 
-    - include: tasks/aws/instances_monitoring.yaml
-
   roles:
     - name: dependencies
 #    - name: community/ssh
 #    - name: community/java
 #    - name: community/logstash
+
+
+  post_tasks:
+
+    - include: tasks/aws/instances_monitoring.yaml
 
