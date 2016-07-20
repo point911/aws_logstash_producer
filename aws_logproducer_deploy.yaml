@@ -15,6 +15,8 @@
         - 1
         - 15
 
+    - include: tasks/aws/instances_monitoring.yaml
+
 
 - name: Install and configure logstash for the app
   hosts:
@@ -44,9 +46,3 @@
     - name: community/ssh
     - name: community/java
     - name: community/logstash
-
-
-  post_tasks:
-
-    - include: tasks/aws/instances_monitoring.yaml
-
