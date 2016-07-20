@@ -41,10 +41,9 @@
         - build
 
   roles:
-    - name: dependencies
-#    - name: community/ssh
-#    - name: community/java
-#    - name: community/logstash
+    - name: community/ssh
+    - name: community/java
+    - name: community/logstash
 
 
   post_tasks:
