@@ -4,6 +4,7 @@
   connection: ssh
   gather_facts: yes
   remote_user: ubuntu
+  become: yes
 
   vars_files:
     - vars/aws/logproducer.yaml
