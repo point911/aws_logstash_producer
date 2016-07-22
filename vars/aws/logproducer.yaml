@@ -41,7 +41,7 @@ env:
       - name: "DiskSpaceUtilization"
         type: "DiskSpaceUtilization"
         comparator: ">="
-        threshold: "20.0"
+        threshold: "15.0"
         unit: "Percent"
         period: "60"
         evaluation_periods: "1"
