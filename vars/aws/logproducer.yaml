@@ -34,6 +34,7 @@ env:
         evaluation_periods: "1"
         alarm_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         ok_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
+        namespace: "AWS/EC2"
 
       - name: "DiskSpaceUtilization"
         type: "DiskSpaceUtilization"
@@ -44,3 +45,4 @@ env:
         evaluation_periods: "1"
         alarm_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         ok_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
+        namespace: "AWS/Linux System"
