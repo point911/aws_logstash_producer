@@ -38,9 +38,9 @@ env:
       - name: "DiskSpaceUtilization"
         type: "DiskSpaceUtilization"
         comparator: ">="
-        threshold: "1.0"
+        threshold: "20.0"
         unit: "Percent"
-        period: "20"
+        period: "60"
         evaluation_periods: "1"
         alarm_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         ok_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
