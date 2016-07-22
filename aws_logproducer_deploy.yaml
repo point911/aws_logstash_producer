@@ -19,31 +19,31 @@
     - include: tasks/aws/instances_monitoring.yaml alarm_state=present
 
 
-#- name: Install and configure logstash for the app
-#  hosts:
-#    - tag_inventory_group_{{ env.aws.instances.inventory_group }}
-#  connection: ssh
-#  gather_facts: yes
-#  become: yes
-#
-#  remote_user: ubuntu
-#
-#  vars_files:
-#    - vars/aws/logproducer.yaml
-#    - vars/aws/logstash.yaml
-#    - vars/ssh_users/ssh_users.yaml
-#    - vars/aws/aws.yaml
-#
-#  pre_tasks:
-#    - name: Update apt
-#      become: yes
-#      apt:
-#        cache_valid_time: 1800
-#        update_cache: yes
-#      tags:
-#        - build
-#
-#  roles:
-#    - name: community/ssh
-#    - name: community/java
-#    - name: community/logstash
+- name: Install and configure logstash for the app
+  hosts:
+    - tag_inventory_group_{{ env.aws.instances.inventory_group }}
+  connection: ssh
+  gather_facts: yes
+  become: yes
+
+  remote_user: ubuntu
+
+  vars_files:
+    - vars/aws/logproducer.yaml
+    - vars/aws/logstash.yaml
+    - vars/ssh_users/ssh_users.yaml
+    - vars/aws/aws.yaml
+
+  pre_tasks:
+    - name: Update apt
+      become: yes
+      apt:
+        cache_valid_time: 1800
+        update_cache: yes
+      tags:
+        - build
+
+  roles:
+    - name: community/ssh
+    - name: community/java
+    - name: community/logstash
