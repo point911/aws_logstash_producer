@@ -35,6 +35,8 @@ env:
         alarm_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         ok_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         namespace: "AWS/EC2"
+        statistic: "Average"
+
 
       - name: "DiskSpaceUtilization"
         type: "DiskSpaceUtilization"
@@ -46,3 +48,4 @@ env:
         alarm_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         ok_topic: arn:aws:sns:us-west-2:541254054660:vkaminskiy_jenkins_test_topic
         namespace: "AWS/Linux System"
+        statistic: "Minimum"
