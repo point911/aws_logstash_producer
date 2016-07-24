@@ -1,4 +1,4 @@
-- name: Wait for become yes
+- name: Terminate aws alarms
   hosts:
     - tag_inventory_group_{{ env.aws.instances.inventory_group }}
   connection: ssh
@@ -10,12 +10,6 @@
     - vars/aws/logproducer.yaml
 
   tasks:
-    - command: sleep "{{ item }}"
-      become: yes
-      with_items:
-        - 1
-        - 15
-
     - include: tasks/aws/instances_monitoring.yaml alarm_state=absent
 
 - name: Terminate logproducer environment
