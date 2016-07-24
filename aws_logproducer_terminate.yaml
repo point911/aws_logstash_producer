@@ -8,7 +8,7 @@
     - vars/aws/aws.yaml
 
   tasks:
-    - include: tasks/aws/instances_monitoring.yaml alarm_state=absent
+    - include: tasks/aws/instances_monitoring_terminate.yaml alarm_state=absent
     - include: tasks/aws/instances_terminate.yaml
     - include: tasks/aws/keypair_terminate.yaml
     - include: tasks/aws/securitygroup_terminate.yaml
